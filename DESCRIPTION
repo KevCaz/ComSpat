@@ -1,0 +1,25 @@
+Package: ComSpat
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: James L. Tsakalos, E. Simonetti
+Maintainer: James L. Tsakalos <jamestsakalos@gmail.com>
+Description: Contains functions useful for analysing
+        the spatial patterns of species combinations.
+License: GPL-2 | GPL-3
+Encoding: UTF-8
+BugReports: https://github.com/jamestsakalos/ComSpat/issues
+URL: https://github.com/jamestsakalos/ComSpat
+Depends:
+    R (>= 3.5.0)
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+Imports: 
+    future,
+    future.apply
