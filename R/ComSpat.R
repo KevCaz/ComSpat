@@ -1386,8 +1386,8 @@
 ##' Juhász-Nagy, P. (1984b). Spatial dependence of plant populations. Part 2. A
 ##' family of new models. Acta Bot. Acad Sci. Hung. 30: 363-402.
 ##'
-##' Tsakalos, J.L. et al. (XXXX). SpatCom: An R package to analyse community
-##' organisation across spatial scales. XXXX.
+##' Tsakalos, J.L. et al. (XXXX). ComSpat: An R package to analyze
+##' within-community spatial association. XXXX.
 ##' @examples
 ##'
 ##' data("grid.random") #input data frame

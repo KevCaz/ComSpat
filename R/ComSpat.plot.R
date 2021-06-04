@@ -29,8 +29,6 @@
 ##' @param cex.axis Numeric.
 ##' @param xaxt NULL or 'n'. To control if x-axis text is displayed.
 ##' @param yaxt NULL or 'n'. To control if y-axis text is displayed.
-##' @return %% ~Describe the value returned %% If it is a LIST, use %%
-##' \item{comp1}{Description of 'comp1'} %% \item{comp2 }{Description of comp2'} %% ...
 ##' @author James L. Tsakalos
 ##' @seealso \code{\link{ComSpat}}, \code{\link{data}}
 ##' @examples

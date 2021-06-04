@@ -16,19 +16,19 @@ variables.
 tran.grass.t
 }
 \description{
-The package contains two real two transects with real data sampled in open
+The package contains two real transects with data sampled in open
 sand grassland in Hungary (Bartha et al. 2008). These real transect data
 sets were derived from Bartha et al.’s (2008) long-term study on the effect
 of climate change on the interannual variability of grassland communities.
 The transect data sets represent: (1) the spatial pattern data of frequent
-species (species with more than 25 presences along the transect
-(selected as a threshold from standard textbooks; \code{tran.grass.s}), and
+species (species with more than 25 presences along the transect)
+selected as a threshold from standard textbooks; \code{tran.grass.s}), and
 (2) the spatial pattern data of plant functional types (PFTs) (in this case
 data of species which belong to the same functional groups were merged;
 \code{tran.grass.t}). These data represent the same transect and same
 community; however, for merging species, all data were used (i.e. the data
 of rare species were also considered within the particular PFT). For
-simplicity, we have only selected a 25m example with a very typical pattern;
+simplicity, we have only selected a 25 m example with a very typical pattern;
 this extent (transect length) is already representative of the community
 pattern.
 }

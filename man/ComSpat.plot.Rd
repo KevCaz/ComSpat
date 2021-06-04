@@ -56,10 +56,6 @@ list.}
 
 \item{yaxt}{NULL or 'n'. To control if y-axis text is displayed.}
 }
-\value{
-%% ~Describe the value returned %% If it is a LIST, use %%
-\item{comp1}{Description of 'comp1'} %% \item{comp2 }{Description of comp2'} %% ...
-}
 \description{
 Function \code{ComSpat.plot} makes use of core R graphics systems to
 display several Information Theory metrics. The \code{ComSpat.plot} does
