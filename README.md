@@ -1,14 +1,63 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# ComSpat
-
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ComSpat is to …
+# ComSpat
 
-## Installation
+Spatially explicit R functions for analyzing the ‘within-**Com**munity
+**Spa**tial organization’ of species combinations to model plant species
+co-occurrence patterns as a function of increasing sampling resolution.
+
+## Description
+
+The package contains diversity measures emerging from a family of models
+grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a,
+1984b, 1993; Juhász-Nagy & Podani, 1983).
+
+The authors intend to gradually develop ComSpat to accommodate for
+several additional measures of Juhász-Nagy’s model family.
+
+For any questions, comments or bug reports please submit an issue here
+on GitHub. Suggestions, ideas and references of new algorithms are
+always welcome.
+
+## News
+
+-   July-2021: Version 1.0 is available from GitHub.
+
+<div style="display: flex;">
+
+<div>
+
+## Main functionalities
+
+-   Calculates the number of realized (observed) species combinations
+    (NRC)
+-   Calculates the Shannon diversity of realized species combinations
+    (Compositional diversity; CD)
+-   Allows for the application of null models:
+    -   complete spatial randomness (CSR) where within- and
+        between=species relationships are randomized
+    -   random shift (RS) where only interspecific relationships are
+        randomized
+-   Plotting of CD and NRC
+
+</div>
+
+<div>
+
+<br /> <br /> <br />
+
+<center>
+<img src="https://github.com/jamestsakalos/ComSpat/blob/master/vignettes/Animation_3_Steps.gif?raw=true" style="width:65.0%" />
+</center>
+
+</div>
+
+</div>
+
+## Installation from the source
 
 You can install the released version of ComSpat from
 [CRAN](https://CRAN.R-project.org) with:
@@ -17,7 +66,8 @@ You can install the released version of ComSpat from
 install.packages("ComSpat")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version from
+[GitHub](https://github.com/jamestsakalos/ComSpat) with:
 
 ``` r
 # install.packages("devtools")
@@ -26,36 +76,16 @@ devtools::install_github("jamestsakalos/ComSpat")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to use the main ComSpat
+function:
 
 ``` r
 library(ComSpat)
-## basic example code
+
+data("grid.random") #input data frame
+data("param.grid") #input paramater data frame
+temp<-ComSpat(data = grid.random, params = param.grid[1:5,], dim_max = 64, type = "Grid")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+The package’s vignette provides detailed explanation and demonstration
+on the application of ComSpat.
