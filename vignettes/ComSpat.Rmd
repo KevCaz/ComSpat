@@ -29,23 +29,13 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The ComSpat (within-community spatial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (**NRC**) and Compositional Diversity (***CD***) that is the diversity of realized species combinations to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
+The ComSpat (within-community spatial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (NRC) and Compositional Diversity (CD) that is the diversity of realized species combinations to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
 
 This document provides a step-by-step guide demonstrating the workflow of ComSpat (**Fig S1**) with practical examples and expanded explanatory text.  
 
 ![**Fig. S1**. General workflow of ComSpat demonstrating the field sampling processes and the sample design presented by the baseline data to form a series of binary coenological tables used to calculate the Information Theory models.](S1_Workflow.jpg){width="100%"}
 
-### Step 1. Installing and loading the package
-
-To install the package you will first need to download the GitHub open source repository package. The authors intend to release the GitHub package to the CRAN repository; when the package is available in CRAN the package can be installed directly through the R interface.
-
-```{r}
-#library(devtools)
-#install_github("jamestsakalos/ComSpat")
-library(ComSpat)
-```
-
-### Step 2. Exploring the simulated and real data sets
+### Step 1. Exploring the simulated and real data sets
 
 The raw data (x) accepted by all functions in the package is a matrix (x) codifying the presence of *m* species in *n* primary sampling units as rows. Sites collected as a grid must contain columns (named 'X' and 'Y') referring to a specific sampling unit positioned in a grid sampling design. The cartesian coordinate 1, 1 refers to the first sampling unit of a grid. Sites collected as transect must contain the column named 'X', referring to a specific sampling unit recorded within a contiguous number sequence (starting at 1). For a crosswalk between grid and transect sample designs and the accepted data format see **Fig S2**.
 
@@ -279,7 +269,7 @@ mtext("PFT frequency", side=2, line=3.5, font=2)
 box(which="plot", lwd=2)
 ```
 
-### Step 3. Preparing the parameter data set
+### Step 2. Preparing the parameter data set
 
 The ComSpat function performs computerized resampling (called secondary sampling) from the primary (grid or transect) data. During secondary sampling users can change the sampling grain (by merging adjacent sampling units into larger ones. To control the secondary sampling procedure, the user must specify several sampling parameters. The secondary sampling parameters are supplied to the params argument as a data frame. The parameter data frame stores the secondary sampling parameters as a series of steps stored as rows. The parameter data frame also contains columns which specify the length and height of the secondary sampling units. The units supplied to the length and height columns must correspond to the number of primary sampling units in each dimension. The height dimension is not  required where sampling was conducted as a transect. We have used Wensel's (1975) method within our package, where incomplete sampling units are complemented by fragments taken from the opposite edge of the mapped grid.
 
@@ -302,7 +292,7 @@ mtext(text = expression('(cm'^2*')'),
 
 ```
 
-### Step 4. Calculation of the Information Theory models
+### Step 3. Calculation of the Information Theory models
 
 Here, using visual aids, we demonstrate NRC and CD's calculation at two scaling steps (spatial-scale 1 and -scale 2) using example grid data (**Figure S9**). The mathematical formula follows Juhász-Nagy (1967, 1976, 1984b, 1984a, 1993) summarized here.
 
@@ -312,7 +302,7 @@ $$Where A, B, ..., Y are the s species of the community; p~*kj*~ is the probabil
 
 ![**Fig. S9**. Illustration and calculation of the number of realized species combinations (NRC) and compositional diversity (CD) using an example data set sampled as a grid. The example demonstrates the calculation of NRC and CD at the primary sampling unit spatial scale (i.e. using the smallest grain, one cell, in the sample universe).](S1_Box_1_Landscape.jpg){width="95%"}
 
-### Step 5. Computerized sampling of the data sets
+### Step 4. Computerized sampling of the data sets
 
 Complete sampling, i.e. sampling from every possible positions with overlaps (cf. Bartha et al. 1995) within the sample universe was used to calculate NRC and CD.
 
@@ -320,9 +310,9 @@ Complete sampling, i.e. sampling from every possible positions with overlaps (cf
 
 While a picture paints a thousand words, perhaps an animation of the secondary sampling will solidify your understanding further. Here we present the complete sampling of every position within the sample universe of a grid (sized at 10 x 10 grids) at three spatial scaling steps.
 
-![**Fig. S11**. Illustration of the first three secondary sampling steps using an example grid. Note that the animation is only visible when the vignette is opened as a html.](Animation_3_Steps.gif)
+![**`Fig. S11`**`. Illustration of the first three secondary sampling steps using an example grid. Note that the animation is only visible when the vignette is opened as a html.`](Animation_3_Steps.gif)
 
-### Step 6. ComSpat without null models.
+### Step 5. ComSpat without null models.
 
 The `'ComSpat'` function allows users to calculate Information Theory models with and without null models. Analysis without the use of null models is a useful feature during the data exploration phase. It is useful because it allows users to optimize their parameter data set and to visually assess the data without the requirement of parallel computing (initiated when null models are generated) and waiting for potentially time-intensive calculations to complete. Here we demonstrate how the `'ComSpat.plot'` function can be used to prepare a graphical output. Because the plotting function was created using R's base plotting code it is compatible with several common plotting functions (including `'par'`).
 
@@ -382,7 +372,7 @@ Visual inspection of **Figure S12** suggests that NRC and CD peak at low levels 
 
 When studying plant species co-occurrence patterns, one can never be sure if there is spatial dependence among species. Under natural (real world) conditions, the causes of the spatial association are not discernible from the examination of the patterns alone. For revealing mechanisms, we should use repeated measures (through time) or manipulative experiments (Rejmanek & Leps 1966). Indeed, designing an experiment to unravel the causes of spatial association in species-rich systems presents a unique (and time and resource-intensive) challenge. Indeed, there are several problems with applying standard statistical tests. In short, this is because sampling units overlap, they are not strictly independent (Podani 1984; Podani et al. 1993). Fortunately, we can compare the observed data against random references and use Monte-Carlo simulations as a basis of the significance test (i.e. null models). Null models are commonly applied to address many ecological questions, especially where experimentation is impossible or where classical statistical methods fail (Gotelli & Graves 1996).
 
-### Step 7. ComSpat with null models.
+### Step 6. ComSpat with null models.
 
 Of the many types of randomizations potentially available to produce random references we have selected to use **complete spatial randomness (CSR)** and **random shift (RS)**. In the case of CSR, all relationships (within species and between species relationships) are randomized. In the random shift, only interspecific relationships are randomized while maintaining the spatial dependence of species.
 
