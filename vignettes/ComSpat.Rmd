@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The ComSpat (within-community spatial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (NRC) and Compositional Diversity (CD) that is the diversity of realized species combinations to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
+The ComSpat (within-community spatial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (***NRC***) and Compositional Diversity (***CD***) that is the diversity of realized species combinations to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
 
 This document provides a step-by-step guide demonstrating the workflow of ComSpat (**Fig S1**) with practical examples and expanded explanatory text.  
 
@@ -59,13 +59,19 @@ We provide two transects with real data sampled in open sand grassland in Hungar
 
 **Table 1.** Properties of the simulation and randomized grids and real transect data sets included within the package. The table shows the name, the type, dimensions (Dim), number of species (NSP), simulated drivers of the spatial patterns and the source of the data sets provided by the package.
 
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 | Data set name            | Type     | Dim     | NSP | Type of patterns                                                                                                              | Reference                            |
-|:-------------------------|:---------|:--------|:----|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------|
++:=========================+:=========+:========+:====+:==============================================================================================================================+:=====================================+
 | grid.patchy.associated   | Grid     | 64 ⨯ 64 | 6   | interspecific and intraspecific spatial dependence due to simulated abiotic and biotic interactions                           | Czárán (1993) & Bartha et al. (1998) |
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 | grid.patchy.[n.ISC]{.ul} | Grid     | 64 ⨯ 64 | 6   | only intraspecific spatial dependence after removing interspecific relationships from the original patterns by randomizations | Bartha & Kertész (1998)              |
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 | grid.random              | Grid     | 64 ⨯ 64 | 6   | random distributions after removing both intra- and interspecific relationships by randomizing the original patterns          | Bartha & Kertész (1998)              |
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 | tran.grass.s             | Transect | 500 ⨯1  | 10  | --                                                                                                                            | Bartha et al. (2008)                 |
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 | tran.grass.t             | Transect | 500 ⨯1  | 6   | --                                                                                                                            | Bartha et al. (2008)                 |
++--------------------------+----------+---------+-----+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
 
 ```{r, fig.width = 7.1, fig.cap="**Fig. S3**. Spatial distribution of the patchy associated, patchy no interspecific association and completely random (i.e. the grid patchy.associated, grid.patchy.n.ISC and grid.mixed.random, resp.) data sets."}
 # View the species spatial distributions
@@ -634,20 +640,33 @@ knitr::kable(assoc.csr$`Summary statistics`[["CD"]][,1:10],format = "html", tabl
 
 **Table 2.** Summary statistic variables and descriptions exported by ComSpat when the randomization argument is specified.
 
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Variable   | Description                                                                                                                      |
-|------------|----------------------------------------------------------------------------------------------------------------------------------|
++============+==================================================================================================================================+
 | Original   | Observed results prior to randomization.                                                                                         |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Mean       | Mean of all randomized values                                                                                                    |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Max        | Maximum of all randomized values                                                                                                 |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Min        | Minimum of all randomized values                                                                                                 |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Quartile 1 | 25^th^ percentile, indicating that 25% of the data are less than or equal to this value                                          |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | Quartile 3 | 75^th^ percentile indicating that 75% of the data are less than or equal to this value                                           |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | std        | Standard deviation is a measure of the amount of variation or dispersion of a set of values (defined by the number of iterations |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | cv         | Coefficient of variation (CV) is a measure of relative variability. It is the ratio of the standard deviation to the mean        |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | p o\<r     | Number of occurrences where the observed value was less than the reference divided by the number of iterations                   |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | p o\>r     | Number of occurrences where the observed value was greater than the reference divided by the number of iterations                |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | 95% UL     | Upper limit of the 95% confidence interval                                                                                       |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 | 95% LL     | Lower limit of the 95% confidence interval                                                                                       |
++------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 ### Case Study 2: Real transect data sets
 
