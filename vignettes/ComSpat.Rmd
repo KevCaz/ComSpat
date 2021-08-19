@@ -45,6 +45,7 @@ The raw data (x) accepted by all functions in the package is a matrix (x) codify
 # Lets have a look at the first few lines and structure of the example data sets
 
 # View the grid data set
+library(ComSpat)
 head(grid.patchy.associated)
 str(grid.patchy.associated)
 
