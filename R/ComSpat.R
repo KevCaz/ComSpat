@@ -1339,7 +1339,7 @@
 
 }
 
-##' Within-Community Spatial Organisation
+##' Within-Community Spatial Organization
 ##'
 ##' The \code{ComSpat} function calculates Juhász-Nagy Information Theory models.
 ##'

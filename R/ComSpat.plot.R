@@ -1,4 +1,4 @@
-##' Within-Community Spatial Organisation Plot
+##' Within-Community Spatial Organization Plot
 ##'
 ##' Function \code{ComSpat.plot} makes use of core R graphics systems to
 ##' display several Information Theory metrics. The \code{ComSpat.plot} does

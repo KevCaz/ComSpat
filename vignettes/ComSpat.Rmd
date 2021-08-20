@@ -1,7 +1,7 @@
 ---
 title: "Guidelines for the *ComSpat* package"
 author: "James Tsakalos (james.tsakalos@gmail.com), Stefano Chelli, Giandiego Campetella, Roberto Canullo, Enrico Simonetti, Sandor Bartha"
-date: "04.06.2021"
+date: "20.08.2021"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -29,9 +29,9 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The ComSpat (within-community spatial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (***NRC***) and Compositional Diversity (***CD***) that is the diversity of realized species combinations to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
+The ComSpat (within-**Com**munity **Spat**ial organization) R package introduces two diversity measures - the Number of Realized Species Combinations (***NRC***) and Compositional Diversity (***CD***) to model plant species co-occurrence patterns as a function of increasing sampling resolution. These diversity measures represent two commonly used measures emerging from a family of models grounded in Information Theory (see Juhász-Nagy, 1967, 1976, 1984a, 1984b, 1993; Juhász-Nagy & Podani, 1983). The authors intend to gradually develop ComSpat to accommodate for several additional measures of Juhász-Nagy's model family.
 
-This document provides a step-by-step guide demonstrating the workflow of ComSpat (**Fig S1**) with practical examples and expanded explanatory text.  
+This document provides a step-by-step guide demonstrating the workflow of ComSpat (**Fig S1**) with practical examples and expanded explanatory text.
 
 ![**Fig. S1**. General workflow of ComSpat demonstrating the field sampling processes and the sample design presented by the baseline data to form a series of binary coenological tables used to calculate the Information Theory models.](S1_Workflow.jpg){width="100%"}
 
